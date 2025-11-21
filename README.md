@@ -9,14 +9,10 @@ Veja a árvore de ficheiros no repositório (descrita no enunciado do projeto).
 
 ## Requisitos
 - pfSense CE/Plus (versão testada: documentar aqui)
-- Ansible >= 2.9
-- Terraform (opcional)
 - openvpn, wireguard-tools (opcional)
-- curl, jq, tcpdump, nc, ping, traceroute
-- Acesso SSH e WebConfigurator/API ao pfSense
 
-4. Gerar/baixar perfis `.ovpn` em `examples/` e testar com `scripts/client_connect_ovpn.sh`.
-5. Executar testes: `./tests/test_openvpn_connect.sh`
+Gerar/baixar perfis `.ovpn` em `examples/` e testar com `scripts/client_connect_ovpn.sh`.
+Executar testes: `./tests/test_openvpn_connect.sh`
 
 ## Testes automatizados
 Scripts em `tests/` geram `tests/artifacts/` com logs e capturas (tcpdump). CI (GitHub Actions) executa testes quando configurado para apontar para um lab.
