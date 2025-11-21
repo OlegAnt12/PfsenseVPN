@@ -1,0 +1,12 @@
+enabled: true
+server:
+  ip: "10.0.0.1"
+  port: 1194
+  proto: udp
+  ca: "Lab-CA"
+  cert: "server-cert"
+clients:
+  - name: clientA
+    ip: "10.8.0.2"
+  - name: clientB
+    ip: "10.8.0.3"

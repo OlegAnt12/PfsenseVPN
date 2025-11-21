@@ -1,0 +1,14 @@
+enabled: true
+tunnels:
+  - peer: "pf1"
+    type: "ipsec"
+    phase1:
+      encryption: "aes256"
+      auth: "sha256"
+      psk: "lab1234"
+    phase2:
+      networks:
+        - "10.0.1.0/24"
+        - "10.0.0.0/24"
+      encryption: "aes256"
+      auth: "sha256"
