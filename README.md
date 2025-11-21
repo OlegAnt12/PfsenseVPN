@@ -1,7 +1,7 @@
 # PfsenseVPN
 # pfsense-vpn-lab
 
-Laboratório automático para pfSense com OpenVPN (remote-access) e IPsec (site-to-site).
+<div backgroud="blue">Laboratório automático</div> para pfSense com OpenVPN (remote-access) e IPsec (site-to-site).
 Inclui: scripts de cliente, testes automatizados e CI.
 
 ## Estrutura
