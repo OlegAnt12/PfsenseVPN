@@ -1,12 +1,17 @@
 import time
-import os
 
-def log(device, message):
-    os.makedirs(f"{device}/logs", exist_ok=True)
-    with open(f"{device}/logs/system.log", "a") as f:
-        f.write(f"{time.ctime()} - {message}\n")
+firewall_logs = []
+openvpn_logs = []
+ipsec_logs = []
 
-def vpn_log(device, message):
-    os.makedirs(f"{device}/logs", exist_ok=True)
-    with open(f"{device}/logs/vpn.log", "a") as f:
-        f.write(f"{time.ctime()} - {message}\n")
+def log_firewall(msg):
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime())
+    firewall_logs.append(f"{timestamp} - {msg}")
+
+def log_openvpn(msg):
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime())
+    openvpn_logs.append(f"{timestamp} - {msg}")
+
+def log_ipsec(msg):
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime())
+    ipsec_logs.append(f"{timestamp} - {msg}")

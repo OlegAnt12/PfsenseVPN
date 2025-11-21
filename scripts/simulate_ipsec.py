@@ -1,22 +1,61 @@
-import yaml
+# simulate_ipsec.py
 import time
-from simulate_log import vpn_log
+import random
+from simulate_log import log_ipsec
 
-def load_config(path):
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
+class IPSecSim:
+    """
+    Simula túneis IPsec site-to-site entre pfSense.
+    Gera logs de handshake, tempo de estabelecimento e possíveis falhas.
+    """
 
-def simulate_ipsec(device_path):
-    cfg = load_config(f"{device_path}/config/vpn_ipsec.yml")
-    if not cfg["enabled"]:
-        print(f"[{device_path}] IPsec desativado")
-        return
+    def __init__(self, peer_a="pf1", peer_b="pf2"):
+        self.peer_a = peer_a
+        self.peer_b = peer_b
+        self.tunnel_established = False
+        self.logs = []
 
-    for tunnel in cfg.get("tunnels", []):
-        time.sleep(0.5)
-        print(f"[{device_path}] Túnel IPsec ativo com peer {tunnel['peer']}")
-        vpn_log(device_path, f"Túnel IPsec com {tunnel['peer']} estabelecido")
+    def establish_tunnel(self):
+        """
+        Simula estabelecimento de túnel IPsec.
+        Pode incluir pequenas falhas aleatórias para teste de resiliência.
+        """
+        log_ipsec(f"Iniciando estabelecimento do túnel {self.peer_a} ↔ {self.peer_b}")
+        start_time = time.time()
+        time.sleep(0.3)  # Simula handshake
 
-if __name__ == "__main__":
-    simulate_ipsec("pf1")
-    simulate_ipsec("pf2")
+        # Simula falha aleatória de handshake (10% de chance)
+        if random.random() < 0.1:
+            self.tunnel_established = False
+            log_ipsec(f"Falha no handshake IPsec entre {self.peer_a} ↔ {self.peer_b}")
+            self.logs.append(f"{time.strftime('%Y-%m-%dT%H:%M:%S')} - Falha no handshake IPsec")
+        else:
+            self.tunnel_established = True
+            elapsed = round(time.time() - start_time, 2)
+            log_ipsec(f"IPsec SA established entre {self.peer_a} ↔ {self.peer_b} (tempo: {elapsed}s)")
+            self.logs.append(f"{time.strftime('%Y-%m-%dT%H:%M:%S')} - IPsec SA established entre {self.peer_a} ↔ {self.peer_b} (tempo: {elapsed}s)")
+
+    def disconnect_tunnel(self):
+        """
+        Simula desconexão do túnel IPsec.
+        """
+        if self.tunnel_established:
+            log_ipsec(f"Túnel IPsec {self.peer_a} ↔ {self.peer_b} desconectado")
+            self.logs.append(f"{time.strftime('%Y-%m-%dT%H:%M:%S')} - Túnel IPsec desconectado")
+            self.tunnel_established = False
+
+    def print_logs(self):
+        """
+        Imprime logs detalhados do túnel IPsec.
+        """
+        print("\n[ 📜 IPSEC LOGS ]")
+        for entry in self.logs:
+            print(entry)
+
+        # Também imprime logs globais, caso existam
+        try:
+            global_logs = log_ipsec.__globals__["ipsec_logs"]
+            for entry in global_logs:
+                print(entry)
+        except KeyError:
+            pass

@@ -1,0 +1,49 @@
+name: Test pfSense VPN Lab
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-lab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Create log directories
+        run: |
+          mkdir -p pf1/logs pf2/logs
+
+      - name: Run lab simulation
+        run: |
+          python3 scripts/simulate_s2s.py
+
+      - name: Check firewall logs for DENY packets
+        run: |
+          if grep -q "DENY" pf1/logs/firewall.log; then
+            echo "Found DENY packets in firewall log (expected for blocked traffic)"
+          else
+            echo "No DENY packets found (all traffic allowed)"
+          fi
+
+      - name: Check OpenVPN logs
+        run: |
+          echo "OpenVPN log summary:"
+          tail -n 5 pf1/logs/openvpn.log
+
+      - name: Check IPsec logs
+        run: |
+          echo "IPsec log summary:"
+          tail -n 5 pf1/logs/ipsec.log

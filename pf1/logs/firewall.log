@@ -1,0 +1,18 @@
+1763721140.11465 - DENY - rule=default packet={'src': '10.8.0.25', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+1763721258.8477798 - DENY - rule=default packet={'src': '10.8.0.25', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+1763721262.8514473 - ALLOW - rule={'action': 'ALLOW', 'proto': 'tcp', 'src': '10.8.0.0/24', 'dst': '192.168.1.10', 'port': 22} packet={'src': '10.8.0.2', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+1763721262.85162 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any'} packet={'src': '10.8.0.3', 'dst': '192.168.1.25', 'port': 80, 'proto': 'tcp'}
+1763721262.8517835 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any'} packet={'src': '10.8.0.4', 'dst': '192.168.1.50', 'port': 3389, 'proto': 'tcp'}
+1763721262.851899 - DENY - rule=default packet={'src': '172.16.0.10', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:44:17 - ALLOW - rule={'action': 'ALLOW', 'proto': 'tcp', 'src': '10.8.0.0/24', 'dst': '192.168.1.10', 'port': 22, 'description': 'SSH para servidor interno'} packet={'src': '10.8.0.2', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:44:17 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.3', 'dst': '192.168.1.25', 'port': 80, 'proto': 'tcp'}
+2025-11-21T10:44:17 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.4', 'dst': '192.168.1.50', 'port': 3389, 'proto': 'tcp'}
+2025-11-21T10:44:17 - DENY - rule=default packet={'src': '172.16.0.10', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'tcp', 'src': '10.8.0.0/24', 'dst': '192.168.1.10', 'port': 22, 'description': 'SSH para servidor interno'} packet={'src': '10.8.0.2', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.3', 'dst': '192.168.1.25', 'port': 80, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.4', 'dst': '192.168.1.50', 'port': 3389, 'proto': 'tcp'}
+2025-11-21T10:46:33 - DENY - rule=default packet={'src': '172.16.0.10', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'tcp', 'src': '10.8.0.0/24', 'dst': '192.168.1.10', 'port': 22, 'description': 'SSH para servidor interno'} packet={'src': '10.8.0.2', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.3', 'dst': '192.168.1.25', 'port': 80, 'proto': 'tcp'}
+2025-11-21T10:46:33 - ALLOW - rule={'action': 'ALLOW', 'proto': 'any', 'src': '10.8.0.0/24', 'dst': '192.168.1.0/24', 'port': 'any', 'description': 'OpenVPN LAN access'} packet={'src': '10.8.0.4', 'dst': '192.168.1.50', 'port': 3389, 'proto': 'tcp'}
+2025-11-21T10:46:33 - DENY - rule=default packet={'src': '172.16.0.10', 'dst': '192.168.1.10', 'port': 22, 'proto': 'tcp'}
