@@ -14,6 +14,11 @@ class OpenVPNSim:
         self.clients = {}   # cliente -> IP atribuído
         self.logs = []
 
+    def start(self):
+        for client in self.clients:
+            ip = f"10.8.0.{self.clients.index(client)+2}"
+            self.logs.append(f"Cliente {client} conectado → IP {ip}")
+
     def connect_client(self, client_name):
         """
         Simula a conexão de um cliente OpenVPN.
